@@ -1,0 +1,50 @@
+<div class="jumbotron text-center">
+  <h1 class="display-5">
+    <h1>{{ name }}</h1>
+
+  </h1>
+</div>
+
+<!-- TODO: Search Form -->
+
+<!-- TODO: List with results -->
+
+<div class="container">
+  <div class="row custom-wrapper">
+    <div class="col-md-12">
+      <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+
+
+        <div class="mb-3">
+          <select class="custom-select" formControlName="country" (change)="changeCountry()">
+          <option value= ""> Choose you country</option>
+          <option  [ngValue]="country" *ngFor="let country of countries" >{{country.name}}</option>
+        </select>
+        </div>
+
+        <div class="mb-3">
+          <select class="custom-select" formControlName="state" (change)="changeState()">
+              <option value= ""> Choose you state</option>
+              <option  [ngValue]="state" *ngFor="let state of states" >{{state.name}}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+          <select class="custom-select" formControlName="city" (change)="changeCity()">
+              <option value= ""> Choose you city</option>
+              <option  [ngValue]="city" *ngFor="let city of cities" >{{city.name}}</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+
+      </form>
+
+      <div>
+
+        <ul>
+          <li *ngFor="let nearCity of nearCities"> {{nearCity.name}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
